@@ -7,9 +7,17 @@ interface HeaderProps {
   onSearchChange: (term: string) => void;
   onOpenAdmin: () => void;
   onGenerateMenu: () => void;
+  showAdminLink?: boolean;
 }
 
-export function Header({ searchTerm, onSearchChange, onOpenAdmin, onGenerateMenu }: HeaderProps) {
+export function Header({ searchTerm, onSearchChange, onOpenAdmin, onGenerateMenu, showAdminLink = false }: HeaderProps) {
+  const handleAdminClick = () => {
+    if (showAdminLink) {
+      window.open('/admin/login', '_blank');
+    } else {
+      onOpenAdmin();
+    }
+  };
   return (
     <header className="bg-gradient-primary text-primary-foreground shadow-glow">
       <div className="container mx-auto px-4 py-6">
@@ -34,7 +42,7 @@ export function Header({ searchTerm, onSearchChange, onOpenAdmin, onGenerateMenu
             <Button
               variant="outline"
               size="sm"
-              onClick={onOpenAdmin}
+              onClick={handleAdminClick}
               className="bg-primary-foreground/10 border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/20"
             >
               <Settings className="h-4 w-4 mr-2" />

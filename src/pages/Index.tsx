@@ -82,6 +82,7 @@ const Index = () => {
         onSearchChange={setSearchTerm}
         onOpenAdmin={() => setShowAdmin(true)}
         onGenerateMenu={generateMenuImage}
+        showAdminLink={true}
       />
 
       <div className="container mx-auto px-4 py-8">

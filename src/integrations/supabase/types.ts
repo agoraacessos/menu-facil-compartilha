@@ -14,7 +14,140 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      categories: {
+        Row: {
+          color: string
+          created_at: string
+          icon: string
+          id: string
+          name: string
+          updated_at: string
+        }
+        Insert: {
+          color: string
+          created_at?: string
+          icon: string
+          id?: string
+          name: string
+          updated_at?: string
+        }
+        Update: {
+          color?: string
+          created_at?: string
+          icon?: string
+          id?: string
+          name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      products: {
+        Row: {
+          available: boolean
+          category_id: string | null
+          created_at: string
+          description: string | null
+          id: string
+          image: string | null
+          is_promotion: boolean
+          name: string
+          original_price: number | null
+          price: number
+          unit: string
+          updated_at: string
+        }
+        Insert: {
+          available?: boolean
+          category_id?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          image?: string | null
+          is_promotion?: boolean
+          name: string
+          original_price?: number | null
+          price: number
+          unit?: string
+          updated_at?: string
+        }
+        Update: {
+          available?: boolean
+          category_id?: string | null
+          created_at?: string
+          description?: string | null
+          id?: string
+          image?: string | null
+          is_promotion?: boolean
+          name?: string
+          original_price?: number | null
+          price?: number
+          unit?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "products_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "categories"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      store_settings: {
+        Row: {
+          address: string | null
+          banner_url: string | null
+          created_at: string
+          delivery_fee: number | null
+          email: string | null
+          facebook: string | null
+          id: string
+          instagram: string | null
+          logo_url: string | null
+          minimum_order: number | null
+          opening_hours: Json | null
+          phone: string | null
+          store_name: string
+          updated_at: string
+          whatsapp: string | null
+        }
+        Insert: {
+          address?: string | null
+          banner_url?: string | null
+          created_at?: string
+          delivery_fee?: number | null
+          email?: string | null
+          facebook?: string | null
+          id?: string
+          instagram?: string | null
+          logo_url?: string | null
+          minimum_order?: number | null
+          opening_hours?: Json | null
+          phone?: string | null
+          store_name?: string
+          updated_at?: string
+          whatsapp?: string | null
+        }
+        Update: {
+          address?: string | null
+          banner_url?: string | null
+          created_at?: string
+          delivery_fee?: number | null
+          email?: string | null
+          facebook?: string | null
+          id?: string
+          instagram?: string | null
+          logo_url?: string | null
+          minimum_order?: number | null
+          opening_hours?: Json | null
+          phone?: string | null
+          store_name?: string
+          updated_at?: string
+          whatsapp?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
